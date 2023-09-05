@@ -1,0 +1,273 @@
+\documentclass[11pt]{article}
+\usepackage[includeheadfoot, top=1.0in, bottom=1.0in, hmargin=1.0in]{geometry}
+\usepackage[utf8]{inputenc}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\usepackage{setspace}
+\usepackage{tabularx}
+\usepackage{xcolor}
+\usepackage{cancel}
+\usepackage{amsmath,amsfonts}
+\usepackage{graphicx}
+\usepackage{siunitx}
+\usepackage{amssymb}
+
+\usepackage[hyphens]{url}
+\usepackage{hyperref}
+\usepackage{enumitem}
+
+\lhead{Astronomy Lab II}
+\rhead{Spring 2022}
+\lfoot{Golant}
+\rfoot{Tue 6-9pm}
+\cfoot{\thepage}
+
+\begin{document}
+
+\begin{center}
+\huge{Lab 5: The H-R Diagram}\\ \medskip \Large{February 22, 2022}
+\end{center}
+
+\section{Introduction: Reaching for the Stars}
+
+Out of dense clumps of gas floating in interstellar space, stars are born. As they fuse elements in their fiery cores, burning bright in the night sky, these stars age and evolve. And, after millions to billions of years, these stars die -- either collapsing into a compact stellar remnant or exploding in a brilliant supernova. In a poetic twist of Nature, the material that's expelled when a star meets its demise is the same material out of which the next generation of stars will arise -- baby stars form out of dead stars, sustaining a seemingly endless stellar life cycle.  
+
+The study of stellar evolution is complex, requiring detailed knowledge of chemistry, fluid dynamics, nuclear physics, and more; for this reason, stellar evolution remains a highly active area of research. Historically, however, the systematic study of stellar evolution is only about a century old, beginning in the early 1910s with the work of Ejnar Hertzsprung and Henry Norris Russell. Independently, Hertzsprung and Russell each discovered that, given a group of stars, plotting the brightness of each star against the surface temperature of each star reveals clear trends linked to the steps in the stellar life cycle. This plot of stellar brightness vs. temperature, called the \textbf{\emph{Hertzsprung-Russell diagram}} (or the H-R diagram), still serves as an incredibly useful visual and organizational aid today.
+
+In this lab, you will construct your own H-R diagram to reveal connections between the brightness, temperature, color, mass, size, and chemical composition of stars. You will also explore how different stars evolve along the H-R diagram as they age and how we can identify stars at different stages of their life cycles. The remarkable amount of information you can extract from the H-R diagram will certainly leave you starstruck!
+
+\section{Building an H-R Diagram}
+Before looking at any data or making any plots, let's make some hypotheses. \textbf{Record your responses in your lab write-up}:
+\begin{enumerate}
+    \item What trends (if any) do you expect to emerge when we plot a group of stars on a brightness vs. temperature plot? Beyond just brightness and temperature, think about how stellar mass, size, color, and chemical makeup might affect a star's position on the plot.
+    
+    \item How do you expect the H-R diagram to change when we plot brightness vs. \emph{color} instead of brightness vs. temperature?
+    
+    \item In the upcoming section, we're going to be plotting an H-R diagram for the \emph{brightest} stars and an H-R diagram for the \emph{nearest} stars. Do you expect these two H-R diagrams to differ? Why or why not? 
+    
+\end{enumerate}
+
+\subsection{The brightest stars}
+% explain magnitude, luminosity, color. how are mag and luminosity related to brightness?
+
+Open up the spreadsheet named ``stars.xlsx'' in the ``Lab 5'' folder under the ``Files'' tab on CourseWorks. The first tab of the spreadsheet (labeled ``brightest'') contains data for the 34 brightest stars in the night sky. Using this data, \textbf{complete the following, recording your responses in your lab write-up}:
+\begin{enumerate}
+    \setcounter{enumi}{3}
+    
+    \item An H-R diagram plots \emph{brightness} vs. \emph{surface temperature} (i.e., the temperature of the outer layer of a star). However, there are multiple ways of quantifying brightness. The \textbf{luminosity} expresses the intrinsic energy output of a star -- effectively, how much light is produced per second. On the other hand, the \textbf{magnitude}, a unitless quantity, expresses brightness on an inverse logarithmic scale (where, confusingly, \emph{smaller} or \emph{more negative} magnitudes correspond to \emph{brighter} stars).
+    \begin{enumerate}
+        \item Construct an H-R diagram for these 34 bright stars by making a scatter plot with the logarithm of \emph{luminosity} (see column ``log(Luminosity)'' on the spreadsheet) on the vertical axis and the surface temperature on the horizontal axis. For historical reasons, the temperature should \emph{increase} as we move to the \emph{left} along the diagram, so make sure to \emph{invert} your horizontal axis. Make sure your axes are labeled with the correct units!
+        
+        \item Now, construct an H-R diagram with the \emph{absolute magnitude} on the vertical axis (and, again, surface temperature on the horizontal axis). Since we want brightness to \emph{increase} up the vertical axis, use the ``Absolute Magnitude (V-band) Reverse y-axis'' column on the spreadsheet, which should place lower magnitudes \emph{above} higher magnitudes. Again, make sure to invert your horizontal axis.
+        
+        \item What differences (if any) do you notice between these two H-R diagrams? For most of this lab, we'll be working with magnitudes rather than luminosities, since the magnitude scale is more popular amongst observational astronomers.
+    \end{enumerate}
+    
+    \item On your magnitude vs. temperature H-R diagram from above, do you see any groups or clumps of stars? If so, describe where on the diagram these groups lie, and (if possible) circle or box these groups on your diagram.
+    
+    \item Where does the Sun lie on your diagram? Compared to the rest of the stars, is the Sun brighter or dimmer than average? Is the Sun hotter or colder than average?
+    
+    \item The stars populating the upper-right corner of your diagram are very bright but relatively cold. How can a star put out such a large amount of light while having such a low temperature?
+    
+    \item Do you think the H-R diagram you've plotted for these bright stars is representative of all stars? Why or why not?
+    
+\end{enumerate}
+
+\subsection{The closest stars}
+Now, go to the second tab in ``stars.xlsx,'' labeled ``nearest.'' This sheet contains data for the 30 closest stars to Earth. \textbf{Complete the following in your lab write-up}:
+\begin{enumerate}
+\setcounter{enumi}{8}
+
+    \item \textbf{Before looking at any new plots}, consider the \emph{biases} in the two data sets we've considered so far (i.e., the brightest stars and the closest stars). 
+    \begin{enumerate}
+        \item Do you expect your H-R diagram of the closest stars to differ from your H-R diagram of the brightest stars? Why (and how)?
+        
+        \item Do you expect your H-R diagram of the closest stars to differ from that of the general population of stars?
+    \end{enumerate}
+    Whenever you're working with any data set (astronomical or otherwise), it's imperative that you always consider how the data may be biased.
+    
+    \item Now, construct an H-R diagram for the 30 closest stars by again making a scatter plot with the (reversed) magnitude on the vertical axis and the surface temperature on the horizontal axis. Once again, remember to invert your horizontal axis so that temperature is greatest to the \emph{left} of the diagram.
+    
+    \item How does your H-R diagram for the closest stars differ from your H-R diagram for the brightest stars?
+    
+    \item How does the Sun compare to other nearby stars (in terms of, for example, brightness and temperature)?
+    
+\end{enumerate}
+
+\subsection{The full diagram}
+You should have seen a slight difference between your two H-R diagrams, with the diagram of the brightest stars having more points towards the top right and top left of the plot, while the diagram of the closest stars should have had more points closer to the Sun and towards the bottom right of the diagram. Now, let's combine these two populations onto a single diagram. \textbf{Complete the following in your lab write-up}:
+\begin{enumerate}
+\setcounter{enumi}{12}
+
+    \item Go to the ``combined'' tab on the ``stars.xlsx'' spreadsheet and once again make a scatter plot of magnitude vs. surface temperature.
+    
+    \item Stars spend most of their lives on the so-called \emph{main sequence}, then evolve off the main sequence and into the \emph{giant branch} once they've exhausted all of the hydrogen fuel in their core.
+    \begin{enumerate}
+        \item Where is the main sequence on your H-R diagram? (hint: the main sequence spans a wide range of magnitudes and temperatures)
+        
+        \item Where is the giant branch on your H-R diagram? (hint: giant stars are brighter than main sequence stars)
+        
+        \item Given the position of the giant branch relative to the main sequence, propose a hypothesis as to how these giant stars came into being. We'll check this hypothesis in Section 3.
+    
+    \end{enumerate}
+    
+    \item We're actually still missing a key component of the H-R diagram: the \emph{white dwarfs}.
+    \begin{enumerate}
+        \item Using data from the ``complete'' tab of the ``stars.xlsx'' spreadsheet, plot an H-R diagram complete with a main sequence, a giant branch, and a population of white dwarfs.
+        
+        \item Compare your new diagram to your previous diagrams to help identify the white dwarfs.
+        \begin{enumerate}
+            \item Describe, roughly, where the white dwarfs are located on the H-R diagram. 
+            
+            \item In terms of brightness and surface temperature, how do white dwarfs compare to main sequence stars?
+        \end{enumerate}
+        
+        \item Where do you think white dwarfs come from? That is, how do you think we end up with this rogue population of stars in this region of the H-R diagram?
+    \end{enumerate}
+    
+    \item Astronomers quantify \emph{color} by comparing magnitude measurements taken at different wavelengths. For instance ``B-V'' color compares how bright a source is at the blue end of the visual spectrum vs. how bright the source is towards the red end of the spectrum.
+    \begin{enumerate}
+        \item Re-plot your complete H-R diagram, but with \emph{color} on the horizontal axis. Use the column labeled ``Color (B-V),'' and make sure that color increases to the \emph{right} along the diagram.
+        
+        \item Compare your magnitude vs. color diagram to your magnitude vs. temperature diagram. Do you still see the same features (i.e., the main sequence, the giant branch, and the white dwarfs) on your magnitude vs. color diagram?
+    \end{enumerate}
+    
+    % need to make sure we only plot main sequence%
+    \item Let's look at some trends along the main sequence, using the data on the ``main sequence'' tab of ``stars.xlsx.''
+    \begin{enumerate}
+        \item Make a plot of \emph{luminosity} vs. \emph{stellar mass}. Does luminosity increase as mass increases?
+        
+        \item Make a plot of \emph{surface temperature} vs. \emph{stellar mass}. Does temperature increase as mass increases?
+        
+        \item Given these trends, describe roughly how stellar mass varies along the main sequence.
+    \end{enumerate}
+    
+    
+    % \item Radius? 
+    
+\end{enumerate} 
+
+Let me know once you've finished up to this point. Once everyone's done with this section, we'll go over the H-R diagram as a class.
+
+\section{Stellar Evolution}
+We've already talked a little about how the structure of the H-R diagram hints at the underlying process of stellar evolution. Now, let's see this in action. Navigate to \url{https://starinabox.lco.global/}; this ``Star in a Box'' applet animates stellar evolution along the H-R diagram. Click ``Open the Lid'' to see the H-R diagram. Use this applet to \textbf{answer the following questions in your lab write-up}:
+\begin{enumerate}
+\setcounter{enumi}{17}
+
+    \item Using the drop-down menu in the bottom left corner, progressively vary the initial mass of the star from 0.2 solar masses to 40 solar masses. The black dot on the H-R diagram denotes the star's initial position on the main sequence. How does varying the mass change the star's position along the main sequence? Is this consistent with what you predicted using the data from the previous section?
+    
+    \item For each mass, click the play button (the right-arrow in the lower right corner of the applet) to watch the star evolve; if the animation is too fast, you can adjust the animation speed with the drop-down menu to the right of the play button.
+    \begin{enumerate}
+    
+        \item Describe the evolution of a Sun-like star (i.e., a star with an initial mass of 1 solar mass) in the context of the H-R diagram. What do you think is happening to the star as it traverses the nearly-horizontal stretch towards the top of its evolutionary track? (hint: for a fixed luminosity, a star's radius and temperature vary inversely)  
+        
+        \item In the previous section, you discovered the main sequence, the giant branch, and the white dwarfs by plotting a collection of stars on the H-R diagram. How are these three populations connected via stellar evolution?
+        
+        \item By varying the initial mass, you should find that there are three possible ways in which a star can complete its life. What are these three end-of-life scenarios (or, rather, what are the three possible end products)? At roughly which \emph{initial} stellar masses do we transition from one end product to another?
+        
+        \item Describe the trajectory of the final evolutionary track leading to a white dwarf. How do the luminosity and temperature of a white dwarf vary with time? 
+    \end{enumerate}
+    
+    \item By clicking on ``Data Table'' in the upper-right corner of the applet, you can find detailed information about a star at each stage of its life. This data table varies for each initial mass. 
+    \begin{enumerate}
+        \item As you increase the initial mass, how does the duration of the main sequence phase change?
+        
+        \item A star leaves the main sequence once it's used up all the hydrogen fuel in its core. A star's luminosity quantifies how quickly the star burns up its fuel. Given what you know about the relationship between mass and luminosity along the main sequence, explain why the trend you found in the previous question makes sense.
+        
+        \item You're trying to learn about a cluster of stars that you just discovered in the far reaches of the Milky Way. So, you decide to plot an H-R diagram of the stars contained in the cluster. You notice that your H-R diagram contains a large number of blue giants, or stars near the upper-left of the main sequence. What does this tell you about the age of the star cluster?
+        
+    \end{enumerate}
+\end{enumerate}
+
+Let me know once you've finished up to this point so that I can explain the next part of the lab.
+
+\section{Beyond the Main Sequence}
+In the grand scheme of things, our Sun is a fairly boring star. Unfortunately, we don't have time to fully cover the rich diversity of stars in our Universe, but we can touch on a few interesting cases. 
+
+So, now it's your turn to teach the class! Each group will be assigned a class of stars (or star-like objects) from the following list:
+
+\begin{itemize}
+
+    \item White dwarfs
+    
+    \item Neutron stars
+    
+    \item Brown dwarfs
+    
+    \item Cepheid variables
+    
+    \item Population III stars
+    
+    \item Wolf-Rayet stars
+\end{itemize}
+
+Spend approximately 30 minutes researching your topic with your partners, then prepare a short (less than 5 minutes) informal presentation for the class; the presentation format is flexible -- you can show a few PowerPoint slides, write something on the white board, draft a brief informational handout for the class, or just talk. The most important thing is that your explanation is \emph{easily understood} by your classmates -- this means that all astronomy jargon should be clearly defined or summarized intuitively. Communicating research is just as important as doing research!
+
+When carrying out your research, try to address the following questions:
+\begin{itemize}
+    \item Where on the H-R diagram would these objects fall?
+    
+    \item What makes these objects interesting or unique (i.e., how are these objects different from typical stars like our Sun)?
+    
+    \item How do the physical properties of these objects (e.g., mass, size, luminosity, temperature) compare to those of the Sun?
+    
+    \item What does a typical object of this type look like? (feel free to show an image)
+    
+    \item \textbf{Bonus}: In the context of stellar evolution, how do these objects form?
+\end{itemize}
+
+If you have any questions, feel free to ask me! I strongly recommend that your start by reading the appropriate article in the SAO Encyclopedia of Astronomy (\url{https://astronomy.swin.edu.au/cosmos/}). Some additional resources you might want to consider:
+\begin{itemize}
+    \item For quick definitions and related terms: The IAU Dictionary of Astronomical Concepts (\url{http://dictionary.obspm.fr/}) and the Unified Astronomy Thesaurus (\url{https://astrothesaurus.org/})   
+    
+    \item For usage of astronomy concepts in context: Astrobites (\url{https://astrobites.org/}) and \url{https://www.space.com/}.
+    
+    \item For a more thorough treatment of a topic, Wikipedia is usually fine, but be warned that sometimes Wikipedia articles can be written in confusing language.
+\end{itemize}
+
+\section{Wrapping Things Up}
+\textbf{Answer the following questions in your lab write-up}:
+\begin{enumerate}
+\setcounter{enumi}{20}
+
+    \item Reflect a bit on the H-R diagram:
+    \begin{enumerate}
+        \item Describe briefly what the H-R diagram \emph{is}. What do the axes of the H-R diagram represent? (remember that there are multiple ways to label the axes of an H-R diagram!)
+        
+        \item Describe the major groups of stars that show up on an H-R diagram. 
+        \begin{enumerate}
+            \item What are the distinguishing features of each of these groups?
+            
+            \item How do the properties of typical stars in each of these groups compare to those of our Sun?
+        \end{enumerate} 
+        
+        \item Describe how the process of stellar evolution connects to the H-R diagram.
+        \begin{enumerate}
+            \item How do the main sequence, the giant branch, and the white dwarfs fit into the life cycle of a star like our Sun?
+        \end{enumerate}
+        
+    \end{enumerate}
+    
+    \item Stars can also be described by their \emph{spectral class}, a classification scheme based on the depth of certain absorption lines in a star's spectrum. In the early 20th century, Annie Jump Cannon and Cecilia Payne showed that a star's spectral class is directly correlated with its temperature.
+    \begin{enumerate}
+        \item Looking at the ``Spectral Class'' and ``Surface Temperature'' columns of the ``combined'' tab on ``stars.xlsx,'' order the following spectral types from coldest to hottest: A, B, F, G, K, M.
+        
+        \item `O'-type stars are extremely hot and very rare, and thus do not appear in our data set. Where on the H-R diagram do you think you'd find O-type stars?
+    \end{enumerate}
+    
+    \item The Vogt-Russell theorem states that the mass and chemical composition of a star \emph{completely} determine the evolutionary trajectory of a star, from birth to death. 
+    \begin{enumerate}
+        \item Explain how the Vogt-Russell theorem motivates the H-R diagram. That is, how does the Vogt-Russell theorem make the H-R diagram ``useful?''
+        
+        \item If the Vogt-Russell theorem didn't hold, could we still use the H-R diagram to predict the life cycle of a star?
+    \end{enumerate}
+    
+    \item Write down at least one question that you still have after finishing this lab.
+    
+    \item If you have any feedback on how today's lab was run, or if you have any suggestions for future lab sessions, please let me know!
+    
+    
+\end{enumerate}
+
+
+\end{document}

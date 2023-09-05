@@ -1,0 +1,319 @@
+\documentclass[11pt]{article}
+\usepackage[includeheadfoot, top=1.0in, bottom=1.0in, hmargin=1.0in]{geometry}
+\usepackage[utf8]{inputenc}
+\usepackage{fancyhdr}
+
+\pagestyle{fancy}
+\usepackage{setspace}
+\usepackage{tabularx}
+\usepackage{graphicx}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{multicol}
+\usepackage{amsmath}
+\usepackage{enumitem}
+
+
+\usepackage[hyphens]{url}
+\usepackage{hyperref}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,      
+    urlcolor=blue,
+}
+
+
+\lhead{Astronomy Lab II}
+\rhead{Spring 2022}
+\lfoot{Golant}
+\rfoot{Tues 6-9pm}
+\cfoot{\thepage}
+
+\begin{document}
+
+\begin{center}
+\huge{Lab 7: Exoplanets}\\ \medskip \Large{March 22, 2022}
+\end{center}
+
+%%%%%%%%%%%%%%%%%%%%%%% INTRO %%%%%%%%%%%%%%%%%%%%%%%
+\section{Introduction: Discovering Alien Worlds}
+%Maryum
+
+Since the discovery of the first exoplanet -- a planet orbiting a star that's not our Sun -- in 1992, the field of exoplanetary astronomy has been revolutionized thanks to NASA's space-based mission, \textit{Kepler}. Launched in 2009, \textit{Kepler} provided a wealth of data on a diversity of systems such as TRAPPIST-1, which hosts 7 planets with orbits smaller than that of Mercury, or KOI-5Ab, an exoplanet that orbits a 3-star system. Exoplanets can be discovered through a number of methods, but the two most common methods are the \textit{radial velocity} and the \textit{transit} methods. Each method has its strengths and weaknesses -- later in this lab, we will discuss the biases of each method. While all the initial exoplanet discoveries were made through the radial velocity method, \textit{Kepler} rapidly provided thousands of additional planet discoveries via transits.  
+
+\medskip \noindent
+With thousands of discovered exoplanets, we can learn a lot about the demographics of exoplanets and their host stars. For instance, \textit{Kepler} showed us that the majority of stars tend to host close-in planets the size of super-Earths or sub-Neptunes. This is unlike our own Solar System and therefore raises questions about the uniqueness of our home planetary system. In addition, giant planets are more likely to be found around stars with more heavy elements, and small rocky planets are more common than giant planets. Although \textit{Kepler} was de-commissioned in 2018, the new NASA mission, TESS (the Transiting Exoplanet Survey Satellite), is picking up where \textit{Kepler} left off. Launched in 2018, TESS has already found almost 200 planets (with 5000+ unconfirmed planet candidates)! As of March 21, there are now 5000+ confirmed exoplanets and 8700+ exoplanet candidates.
+
+Let's think a bit about exoplanet demographics and detection methods. \textbf{Answer the following in your lab write-up:}
+\begin{enumerate}
+    \item If you were trying to detect a planet around another star, how might you go about this? (there's no single ``correct'' answer to this)
+    
+    \item Briefly describe the transit and radial velocity methods.
+    
+    \item You, an expert exoplanet astronomer, have just discovered a planet with a radius and mass equal to that of the Earth. Do you think this planet would be able to support life? What other information would help you determine if the planet were ``habitable?''
+    
+    \item Using the NASA Exoplanet Archive plotting tool (\url{https://exoplanetarchive.ipac.caltech.edu/cgi-bin/IcePlotter/nph-icePlotInit?mode=demo&set=confirmed}), look at the following plots; either copy/paste the plots into your write-up, or provide a brief qualitative description.  
+    \begin{enumerate}
+        \item Plot Planet Radius on the x-axis and Orbital Period (i.e., a ``year'' for a given exoplanet) on the y-axis (you'll need to click ``redraw'' in order to see the plot). Why do you think there's a lack of detections for long-period, small radius planets?
+        
+        \item Plot Planet Mass on the x-axis and Orbital Period on the y-axis. Why do you think there's a lack of detections for planets with low mass and high orbital period? 
+        
+        \item Click the tab labeled ``Histogram'' in the top left corner and make a histogram of Planet Radius. Using this plot, explain the term `radius valley.'
+        
+    \end{enumerate}
+    
+    \item NASA's space-based mission, \textit{Kepler}, was named after Johannes Kepler, famous for his three laws of planetary motion. His third law states that \begin{equation}
+        P^2 \; = \; \frac{a^3}{M},
+    \end{equation}
+    where \textit{P} is the orbital period of a planet in years, \textit{a} is the semi-major axis (related to the radius of the orbit) in Astronomical Units (AU), and \textit{M} is the mass of the host star in solar masses.
+    
+    ``16 Cyg B b'' is a planet that orbits the Sun-like star 16 Cyg B with an orbital period of 798.5 days. Calculate this planet's semi-major axis using the formula above, where \textit{M} is 1 M$_\odot$. Be aware of units! Compare your answer to the true answer of 1.68 AU.
+\end{enumerate}
+
+
+%%%%%%%%%%%%%%%%%%%%%%% TRANSITS %%%%%%%%%%%%%%%%%%%%%%%
+\section{Transits: Cosmic Photobombs}
+%Ben
+
+As mentioned in the intro, over $\sim$25 years of searching, astronomers have tried many techniques to find planets around other stars. However, one of these techniques is the current reigning champion out of them all, if you go purely by number of discoveries: referred to as the \emph{transit method}, this technique is responsible for \emph{3,780} discoveries out of the 4,940 currently known exoplanets. Entire space missions, with names like \textit{CoRoT}, \textit{Kepler}, \textit{TESS}, \textit{PLATO}, and \textit{Ariel}, have been launched with the explicit goal of using this technique to find and characterize new planets. The James Webb Space Telescope, the recently launched massive observatory floating out beyond the moon, will use the transit method during its first and highest-priority science observations. Clearly, transits are the biggest game in exoplanet science right now, and will likely remain that way for a while.
+
+\medskip \noindent
+So, what exactly is the transit method? Somewhat flippantly, it’s when a planet photobombs a picture we’re taking of a star.
+
+\medskip \noindent
+When a star is left alone, it should shine with a steady, constant brightness that we agree on each time we measure it. However, it turns out that most stars have planets that circle around them in clean, repeating patterns. If the orientation of these orbits lines up just right, those planets will fall between us and the star once per lap around the star. From our point of view, the planets will block a little bit of light from their parent star at the same point in each of their “years” -- our brightness measurements will appear to drop for a short time, but then will go back up again once the planet continues on its way. On a graph of brightness vs. time (astronomers refer to these graphs as \emph{light curves}), a transiting planet will look like Figure \ref{fig:transit}.
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.9\textwidth]{Images/transit_cartoon.png}
+    \caption{Illustration of an exoplanet transit. Credit: NASA}
+    \label{fig:transit}
+\end{figure}
+
+\medskip \noindent
+This is a hard thing to visualize in still frames, so check out the animation at the bottom of this page for an illustration of how this looks as the planet orbits: \url{https://exoplanets.nasa.gov/faq/31/whats-a-transit/}
+
+\medskip \noindent
+These graphs are the only information we get about a transiting planet: no pretty pictures, and no cool movies. But, as simple as they are, we can learn a lot about a planet from them! \textbf{Think about and answer the following questions before moving on:}
+
+\begin{enumerate}[resume]
+    \item What happens to the size of the light-curve ``dip” as the size of the planet gets larger? Could we measure the size of a planet just by looking at the light curve?
+    
+    \item What happens if a star has planets but their orbits are ``tilted” away from us? Would we still be able to detect these planets via their transits?
+    
+    \item How could we use the transit method to measure the period of a planet? The period is the time it takes for a planet to complete one lap around its star.
+    
+    \item How many transits of Earth would an alien measure if they measured the Sun’s brightness for 5 years?
+\end{enumerate}
+
+\subsection{Measuring Your Very Own Transit}
+\noindent
+With the above context, we’re going to pivot and try to get a better sense of how this method works in practice. For this part, break into small groups of at least 2. This portion of the lab directs at least one member of your group to stand on a stool -- if that is infeasible or would cause discomfort, please let me know.
+
+\begin{itemize}
+    \item Have at least one member download an app which can use your phone’s camera to measure brightness (Android users, I recommend Light Meter Free; iPhone users, I recommend LUX Light Meter Free). Plenty of these apps exist for photographers, but make sure you get one which uses your phone’s camera, not its light meter.
+    
+    \item Get a paper towel roll (or roll up/tape a piece of paper into a similar shape), then move to someplace in the room where, when looking through the tube, you can isolate a single one of the weird orb overhead lights (ideally one of the lower ones). This will be your target star!
+    
+    \item Pick a ``planet” which you will try to detect -- one of the styrofoam balls/other objects in the center of the library.
+    
+    \item Have one group member hold the tube over their camera’s lens so that just the “star” is in view. Then, take 8 measurements of the brightness of the star. We do this since no measurement is perfect, and these apps can be finicky -- real issues astronomers face with telescopes too! Write down each of your measurements in your lab write-up.
+    
+    \item Now, with another member standing on a stool/chair within reach of the star, have them hold the ``planet” in front of light. Take another 8 measurements, trying to change as little about the scene as possible between readings, recording these in your write-up as well.
+    
+    \item Before stepping down, use a string and a yard stick or a flexible tape measure to record the circumference of your ``star” in centimeters to three significant figures.
+\end{itemize}
+
+\noindent
+Congratulations, you’ve just taken a transit measurement! Now comes the scientific analysis -- let’s see what we can learn about this ``planet.”
+
+\medskip \noindent
+\begin{enumerate}[resume]
+    \item First, some data science: start by throwing out the highest and lowest measurements in both of your data sets, then take the average of the remaining 6 in each. Record these averages in your write-up. 
+\end{enumerate}
+
+\noindent
+These are steps taken when looking at real light curves, too. We always start by discarding \emph{outliers}, or points that are so far from all the others that we suspect something strange happened during that measurement. Taking the average is one form of a technique called \emph{binning} -- we’re never completely confident in a measurement, but we can decrease our uncertainty by considering more and more measurements. If your ``without planet” average is lower than your ``with planet” average, let me know and I will give you some backup data -- something may have gone wrong with your data collection! (likely just the sensitivity of the app -- we’re trying to make a subtle measurement)
+
+\medskip \noindent
+Now, some math! Transit analysis pivots around measuring how much light was blocked by your star. We can ``normalize” the amount of light we measured by setting the out-of-transit measurements (i.e., the measurements where the star is not covered by any planets) to 100\%. To measure the influence of the planet:
+\begin{enumerate}[resume]
+    \item Divide your ``with planet" average by your ``without planet" average. Write down this number, as well as one minus this number; we'll call the first number $d$ and the second number $1 - d$. We call the latter of these two numbers the \textit{depth} of the transit.
+\end{enumerate}
+
+\noindent
+You might have guessed that the depth of the transit depends on the area we see of the star and the area we see of the planet. With some rearrangement, we can use our measurement of the star’s size and the transit’s depth to get a measurement of the planet’s size! First, we need to calculate the area of your star.
+
+\begin{enumerate}[resume]
+    \item Take your measurement of the star's circumference and divide by 3.14 to get the diameter (the circumference of a circle, $C$, is given by $\pi D$, where $D$ is the diameter). 
+    
+    \item Divide your diameter by 2 to get the radius of your star ($R = D/2$, where $D$ is the diameter).
+    
+    \item Now take your radius, square it, and multiply by 3.14 (the area of a circle $a$ is given by $a = \pi R^2$).
+\end{enumerate}
+
+\noindent
+Ok! This is the area of the star responsible for 100\% of its expected brightness.
+
+\medskip \noindent
+Now onto the more important calculation: combining the visible area and the measured depth into an estimate of the planet's size. The planet can be thought of as ``negative area" when it's in front of the star, or something which blocks a small patch we would have otherwise seen. 
+
+\begin{enumerate}[resume]
+    \item Multiply your transit depth ($1-d$) by the area of your star -- this is the area your planet blocks while it transits. In other words, this is the area of your planet!
+    
+    \item Take this area and divide by 3.14, then take the square root (again, $a = \pi R^2$, but this time we have $a$ and want $R$). This is your measured planet radius! 
+    
+    \item Now (and only now) measure the circumference of your planet and calculate its radius the same way you did with your star. 
+\end{enumerate}
+
+
+\medskip \noindent
+Whew! You've now measured the size of a planet by measuring its effect on its host star's brightness. Some final things to consider:
+
+\begin{enumerate}[resume]
+    \item Is the radius you derived from brightness measurements similar to the one you actually measured when holding the planet? If not, do you have any ideas for why these numbers might be different?
+    
+    \item One of the sillier steps to this process was using a tube to isolate just one star. This was a necessary step, though! 
+    \begin{enumerate}
+        \item What do you think would happen if your tube was a little wider, wide enough that you actually had 2 stars in view, but the planet still orbited just one?
+        
+        \item If you had two stars in view, would your without-planet measurements be higher or lower? Would your with-planet measurements be higher or lower? Would your transit depth (and therefore final planet radius) be higher or lower?
+        
+    \end{enumerate}  
+    
+    This is a real problem astronomers worry about, called \emph{blending}.
+\end{enumerate}
+
+\noindent
+Just for fun, let's take a look at a real light curve. The one pictured below is one of the most famous light curves recorded so far: measurements of the TRAPPIST-1 system. 
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.9\textwidth]{Images/trappist1.png}
+    \caption{The TRAPPIST-1 system. Credit: Gillon et al. 2017}
+    \label{fig:transits}
+\end{figure}
+
+\medskip \noindent
+Note how complicated these light curves can become when you start adding in more than one planet! Each of the dots represents a measurement of the star's brightness, and each of the excursions where the brightness drops and quickly returns is a transit. There are 7 Earth-sized planets orbiting this one tiny star, all with different radii and periods. It's one of the first targets for the James Webb Space Telescope.
+
+%%%%%%%%%%%%%%%%%%%%%%% RV %%%%%%%%%%%%%%%%%%%%%%%
+\pagebreak
+\section{Wadial Wobbles: The Radial Velocity Method}
+\subsection{Predictions} \label{sec:RV_predictions}
+
+In our Spectroscopy lab, you learned how we can use the lines in a spectrum to figure out how fast an object is moving towards or away from us. The faster something is moving away from us, the more \textit{redshifted} its spectral lines will be, while the faster something is moving towards us, the more \textit{blueshifted} its spectral lines will be. When we study galaxies, we witness very large redshifts, since these galaxies are moving away from us very quickly. However, redshift and blueshift are not confined to large-scale motions: we can use these same spectroscopic techniques to detect motions in nearby stars caused by the gravitational tugs of their planetary companions. These small tugs mean that we are looking at velocities on the order of a few tens of km/s, rather than on the order $10^8$ km/s as with galaxies, and so the deviations in the spectral lines are \textit{minuscule}. Thanks to modern high-resolution spectrographs, we can now detect these deviations. Before we explore this ``Radial Velocity'' method in more depth, \textbf{answer the following questions in your lab write-up:}
+
+\begin{enumerate}[resume]
+    \item Check out this gif from the Wikipedia page on radial velocity: \url{https://en.wikipedia.org/wiki/Radial_velocity#/media/File:Planet_reflex_200.gif}.  You'll notice that both the planet and the star orbit around a common center of mass, but this center of mass is generally located somewhere inside the star. Describe qualitatively how the star moves relative to the position of the planet. In other words, where is the star in its orbit at each point of the planet's orbit?
+        
+    \item Assume that we on Earth are viewing this system edge-on from the bottom of the gif (as opposed to face-on, as the system is currently shown).
+        \begin{enumerate}
+            \item When the planet is moving away from us (on the left side of the gif), would the \emph{star's} light be redshifted or blueshifted?
+            
+            \item When the planet is moving towards us (on the right side of the gif), would the \emph{star's} light be redshifted or blueshifted?
+            
+            \item When the planet is directly in front of or behind the star, will we see any spectral shift? (\textit{Hint}: Think about whether there is any motion of the star \textit{towards} or \textit{away} from us at these points.)
+        \end{enumerate}
+        
+    \item Let's think about how our position relative to the star-planet system affects our ability to take radial velocity measurements.
+        \begin{enumerate}
+            \item We know that if we view the system edge-on (also called ``$90^\circ$ inclination''), we can see the spectrum shifting because there is motion towards or away from us. If we slowly decrease the inclination towards a face-on system ($0^\circ$ inclination), would we get more or less shifting of the spectral lines?
+            
+            \item If we were viewing a system face-on, would we be able to use radial velocities to deduce that there's a planet orbiting the star? Why or why not?
+        \end{enumerate}
+        
+    \item Finally, let's make some predictions about how a system's properties affect the radial velocity of the star.
+    \begin{enumerate}
+        \item Holding the \textit{planet's} mass constant, if we increase the star's mass, will the star have higher or lower radial velocity? Why?
+        
+        \item Holding the \textit{star's} mass constant, if we increase the planet's mass, will the star have higher or lower radial velocity? Why?
+        
+        \item Holding the \textit{star and planet} mass constant, if we increase the planet's distance from the star, will the star have higher or lower radial velocity? Why?
+    \end{enumerate}
+        
+\end{enumerate}
+
+\subsection{RV Simulator}
+\noindent
+If you haven't already, you should download the appropriate ``NAAP Labs" package from \url{https://astro.unl.edu/nativeapps/}. Once you have installed it, open the ``NAAP Labs'' application on your computer. Click on ``12. ExtraSolar Planets" and select ``Exoplanet Radial Velocity Simulator."  This should open another window with the simulator. If you are having technical trouble with this, let me know.
+
+\medskip \noindent
+In the simulator window, you should see a visualization of your system (which you can drag around to get different views) and a plot that shows the radial velocity of the star on the y-axis and the phase of the planet's orbit (i.e., where it is in its orbit) on the x-axis. You can show multiple views of the system under ``Visualization Controls," play/pause and speed up or slow down the animation under ``Animation Controls,'' and alter the system's properties under the remaining boxes.
+
+\medskip \noindent
+\textbf{In your lab write-up, set up a table with the following six columns: Inclination, Star Mass, Planet Mass, Semimajor Axis, Eccentricity, Description.} In the ``Description" column,  record the amplitude of the radial velocity of the star and describe the shape of the radial velocity (RV) curve.
+
+\begin{enumerate}[resume]
+    \item Using the ``Presets" box, view Options A, B, C, and D (you'll need to click ``set'' after changing the preset). In your table, add a row for each of these four presets and fill in the relevant information.
+
+    \item How does the shape of the RV curve change as eccentricity increases? Based on the animation, why do you think this is?
+        
+    \item Does your prediction from Section \ref{sec:RV_predictions} match your observations of how the RV of a star varies with increasing planet mass? If not, what is actually happening and why do you think that is?
+    
+    \item Return to the Option A preset. 
+    \begin{enumerate}
+        \item Holding all other properties fixed, describe the trends you see when varying
+        \begin{enumerate}
+            \item the planet's semimajor axis.
+            \item the star's mass.
+            \item the orbit's inclination.
+        \end{enumerate}
+        
+        \item Do these trends match your predictions from Section \ref{sec:RV_predictions}? If not, how do they differ?
+    \end{enumerate}
+    
+    \item Select a real exoplanet (options 5-7) from the Presets menu. Using what you know about how mass, semimajor axis, eccentricity, and inclination affect the radial velocity of the star, describe why the RV plot has the shape and amplitude it does.
+    
+    \item Often, we do not know the inclination of a star-planet system relative to Earth. If we can measure a transit, we know that the system is close to edge-on; otherwise, we cannot derive this quantity from RV alone. Furthermore, planet mass, semimajor axis, and inclination all have similar effects on the RV. While we can use Kepler's 3rd law to find the semimajor axis, we still cannot separate out the effects of inclination and planet mass. Given what you know about how the RV plot changes with inclination and planet mass, how would the planet's mass \emph{appear} to change as the inclination of a system decreases from $90^\circ$ to $0^\circ$? At what inclination would we measure the maximum mass?
+\end{enumerate}
+
+%online simulator - shows data points and lets you put in different periods
+%http://www.stefanom.org/systemic-online/?sys=14Her.sys&np=1&P1=1800.&M1=6.5&E1=0.25&im=0
+
+%%%%%%%%%%%%%%%%%%%%%%% CONCLUSIONS %%%%%%%%%%%%%%%%%%%%%%%
+\section{Wrapping things up}
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.6\textwidth]{Images/Exoplanet Demographic Techniques.png}
+    \caption{Demographics of exoplanets colored by detection techniques. Credit: Bowler, 2016.}
+    \label{fig:techniques}
+\end{figure}
+
+\begin{enumerate}[resume]
+    \item Figure \ref{fig:techniques} shows a plot of the masses of discovered exoplanets versus their distance from their host stars, colored by the detection method that was used to discover them. Let's think about why certain methods may be biased towards detecting certain types of planets.
+    \begin{enumerate}
+        \item Using what you learned in this lab, explain why planets detected with the transit technique are (i) primarily massive and (ii) close to their host stars.
+        
+        \item Using this same plot, we see that we can use the radial velocity method to detect planets out to larger separations.
+        \begin{enumerate}
+            \item Why is the RV method more effective than the transit method for detecting planets far from their hosts?
+            
+            \item Why can't we detect small planets far from their stars using the RV method?
+        \end{enumerate}
+    \end{enumerate}
+    
+    \item The ``direct imaging'' of exoplanets  (\url{https://www.planetary.org/articles/fireflies-next-to-spotlights-the-direct-imaging-method}) is an active area of research. In this technique, astronomers try to block out light from stars so that they can obtain higher-quality pictures of their orbiting planets.  
+    \begin{enumerate}
+        \item What are the strengths and weaknesses of direct imaging?
+        
+        \item Why is direct imaging biased towards massive planets far from their hosts?
+    \end{enumerate}
+    
+    \item For each of the following fictional planetary systems, which detection method (transits, RV, or direct imaging) would be the most effective (and why)? 
+    \begin{enumerate}
+        \item A small, rocky, close-in planet in an edge-on system.
+        \item A high-mass planet moderately far from its host star on a slightly inclined orbit.
+        \item A very big, bright planet very far from the star in a face-on system.
+    \end{enumerate}
+    
+    \item Write down at least one question that you still have after finishing this lab.
+    
+    \item If you have any feedback on how today's lab was run, or if you have any suggestions for future lab sessions, please let me know!
+\end{enumerate}
+
+
+\end{document}
